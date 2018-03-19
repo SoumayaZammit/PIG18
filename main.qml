@@ -18,6 +18,7 @@ Window {
         id: rectangle8
         width: 640
         height: 480
+        color: "#fefcdc"
         gradient: Gradient {
             GradientStop {
                 position: 0
@@ -256,6 +257,7 @@ Window {
                 window.show()
                 */
                 childWindow.visible = !childWindow.visible
+                root.visible = !root.visible
 
             }
         }
@@ -270,10 +272,39 @@ Window {
         }
     }
     Window {
-    id: childWindow
-    title: "My ChildWindow"
-    width: 640
-    height: 480
+        id: childWindow
+        title: "My ChildWindow"
+        width: 640
+        height: 480
+        property alias rectangle: rectangle
+        visible: false
+
+        Rectangle {
+            id: rectangleChild
+            gradient: Gradient {
+                GradientStop {
+                    position: 0
+                    color: "#fefcdc"
+                }
+
+                GradientStop {
+                    position: 1
+                    color: "#aaa54c"
+                }
+            }
+            visible: true
+            anchors.fill: parent
+
+            Grid {
+                id: grid
+                x: 120
+                y: 40
+                width: 400
+                height: 400
+                rows: 3
+                columns: 3
+            }
+        }
     }
 
 
